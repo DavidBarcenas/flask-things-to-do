@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}
     {{ super() }} Welcome
 {% endblock title %}
 
 {% block content %}
+    {% if user_name %}
+        <h1>Hello {{ user_name }}</h1>
+    {% endif %}
     {% if user_ip %}
-        <h1>Hello world from Flask, your ip is {{ user_ip }}</h1>
+        <h2>your ip is {{ user_ip }}</h2>
     {% else %}
         <a href="{{ url_for('index') }}">Go to home</a>
     {% endif %}
+
+    <div class="container">
+       {{ wtf.quick_form(login_form) }}
+    </div>
 
     <ul>
     {% for todo in todos %}
