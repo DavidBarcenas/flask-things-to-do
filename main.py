@@ -24,32 +24,20 @@ def index():
     user_ip = request.remote_addr
 
     response = make_response(redirect('/hello'))
-    # response.set_cookie('user_ip', user_ip)
     session['user_ip'] = user_ip
 
     return response
 
 
-@app.route('/hello', methods=['GET', 'POST'])
+@app.route('/hello')
 def hello():
-    # user_ip = request.cookies.get('user_ip')
     user_ip = session.get('user_ip')
     user_name = session.get('username')
-    login_form = LoginForm()
 
     context = {
         'user_ip': user_ip, 
         'user_name': user_name, 
         'todos': todos,
-        'login_form': login_form
     }
-
-    if login_form.validate_on_submit():
-        username = login_form.username.data
-        session['username'] = username
-
-        flash('successfully registered username')
-
-        return redirect(url_for('index'))
     
     return render_template('hello.html', **context)
