@@ -30,5 +30,14 @@ def put_todo(user_id, description):
 
 
 def delete_todo(user_id, todo_id):
-    todos_ref = db.document(f'users/{user_id}/todos/{todo_id}')
+    todos_ref = _get_todo_ref(user_id, todo_id)
     todos_ref.delete()
+
+def update_todo(user_id, todo_id, done):
+    todo_done = not bool(done)
+    todos_ref = _get_todo_ref(user_id, todo_id)
+    todos_ref.update({ 'done': todo_done })
+
+
+def _get_todo_ref(user_id, todo_id):
+    return db.document(f'users/{user_id}/todos/{todo_id}')
