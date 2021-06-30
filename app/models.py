@@ -21,7 +21,7 @@ class UserModel(UserMixin):
     def query(user_id):
         user_doc = get_user(user_id)
         user_data = UserData(
-            user_doc.id(),
+            user_doc.id,
             user_doc.to_dict()['password']
         )
 
