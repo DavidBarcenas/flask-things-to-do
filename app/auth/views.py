@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from . import auth
-from app.forms import LoginForm
+from app.forms import LoginForm, RegisterForm
 from app.firestore_service import get_user, user_put
 from app.models import UserModel, UserData
 
@@ -40,29 +40,32 @@ def login():
 
 @auth.route('signup', methods=['GET', 'POST'])
 def signup():
-    signup_form = LoginForm()
+    signup_form = RegisterForm()
     context = { 'signup_form': signup_form }
 
     if signup_form.validate_on_submit():
         username = signup_form.username.data
         password = signup_form.password.data
+        confirm_password = signup_form.confirm_password.data
 
-        user_doc = get_user(username)
-
-        if user_doc.to_dict() is None:
-            password_hash = generate_password_hash(password)
-            user_data = UserData(username, password_hash)
-
-            user_put(user_data)
-
-            user = UserModel(user_data)
-            login_user(user)
-            flash('Welcome back!')
-
-            return redirect(url_for('hello'))
+        if password != confirm_password:
+            flash('Passwords do not match.', 'warning')
         else:
-            flash('User already exists')
+            user_doc = get_user(username)
 
+            if user_doc.to_dict() is None:
+                password_hash = generate_password_hash(password)
+                user_data = UserData(username, password_hash)
+
+                user_put(user_data)
+
+                user = UserModel(user_data)
+                login_user(user)
+                flash('Welcome back!')
+
+                return redirect(url_for('hello'))
+            else:
+                flash('User already exists')
 
     return render_template('signup.html', **context)
 

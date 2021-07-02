@@ -6,8 +6,21 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Create an account</h1>
-    <div class="container">
-       {{ wtf.quick_form(signup_form) }}
+    <div class="wrapper">
+        <div class="container login">
+            <div class="row">
+                <div class="col-md-7">
+                    <img src="{{ url_for('static', filename='images/undraw_creative_thinking_b3bc.svg') }}" alt="" class="img-responsive">
+                </div>
+                <div class="col-md-5">
+                    <h2>Register and start managing your things to do.</h2>
+                    {{ wtf.quick_form(signup_form) }}
+                    <div class="login-question">
+                        <p>Do you already have an account?</p>
+                        <p>Sign in <a href="{{ url_for('auth.login') }}">here!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock  %} 

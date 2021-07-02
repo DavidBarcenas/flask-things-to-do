@@ -1,7 +1,141 @@
-nav {
-    background: darkblue;
+.navbar {
+    margin: 0;
+    background: #2f2e41;
 }
 
-nav a {
+.navbar-default .navbar-nav>li>a {
     color: #fff;
+}
+
+.navbar-brand {
+    border-right: 1px solid rgba(255,255,255,.3);
+}
+
+.navbar-brand span {
+    display: inline-block;
+    color: #fff;
+    vertical-align: top;
+}
+
+.navbar-brand img {
+    display: inline-block;
+    max-width: 32px;
+    position: relative;
+    bottom: 4px;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 52px);
+}
+
+.form .btn {
+    background: #00BFA6;
+    color: #fff;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.form .control-label {
+    color: #00BFA6;
+}
+
+.login .form {
+    padding-top: 2.5rem;
+}
+
+.login-question {
+    text-align: center;
+}
+
+.login-question a {
+    color: #00BFA6;
+}
+
+.wrapper-tasks-header {
+    background: #00BFA6;
+    color: #fff;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
+}
+
+.wrapper-tasks-header div {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.wrapper-tasks-header h1 {
+    margin: 0;
+    margin-bottom: 1.5rem;
+}
+
+.wrapper-tasks-header form .form-group,
+.wrapper-tasks-header form .btn-default {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.wrapper-tasks-header form .btn-default  {
+    background: #2f2e41;
+    border: none;
+    width: auto;
+    margin: 0;
+}
+
+.wrapper-tasks-header .form-group {
+    padding: 0;
+}
+
+.wrapper-tasks-header .form-group label {
+    display: none;
+}
+
+.wrapper-tasks table .btn-default {
+    width: auto;
+    margin: 0;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.wrapper-tasks table th:nth-of-type(2), 
+.wrapper-tasks table th:nth-of-type(3), 
+.wrapper-tasks table th:nth-of-type(4),
+.wrapper-tasks table td:nth-of-type(2), 
+.wrapper-tasks table td:nth-of-type(3), 
+.wrapper-tasks table td:nth-of-type(4) {
+    text-align: center;
+} 
+
+.wrapper-tasks table td:nth-of-type(3) .btn-default { 
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.wrapper-tasks table td:nth-of-type(4) .btn-default {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.success,
+.warning {
+    display: inline-block;
+    color: #fff;
+    width: 50px;
+    text-align: center;
+    padding: 1px 5px;
+}
+
+.success {
+    background-color: #00BFA6;
+}
+
+.warning {
+    background-color: #2f2e41;
 }

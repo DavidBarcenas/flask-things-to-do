@@ -6,7 +6,21 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container">
-       {{ wtf.quick_form(login_form) }}
+    <div class="wrapper">
+        <div class="container login">
+            <div class="row">
+                <div class="col-md-7">
+                    <img src="{{ url_for('static', filename='images/undraw_accept_tasks_po1c.svg') }}" alt="" class="img-responsive">
+                </div>
+                <div class="col-md-5">
+                    <h2>We all need to keep a list of things we have to do.</h2>
+                    {{ wtf.quick_form(login_form) }}
+                    <div class="login-question">
+                        <p>You do not have an account?</p>
+                        <p>Sign up <a href="{{ url_for('auth.signup') }}">here!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock  %} 
