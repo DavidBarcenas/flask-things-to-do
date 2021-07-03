@@ -4,9 +4,14 @@ Single page application that allows you to create, read, update and delete to-do
 
 ### Preview  
 
+#### Login
 ![](./.readme-static/app.png)
 
-You can see more screenshots of the application [here](./.readme-static/app-preview.md).
+#### Home
+![](./.readme-static/app-home.png)
+
+#### Signup
+![](./.readme-static/app-signup.png)
 
 ### Technologies
 
